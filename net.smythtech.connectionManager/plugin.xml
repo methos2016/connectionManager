@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="net.smythtech.connectionManager"
+    version="1.0.0">
+    <name>Connection Manager</name>
+    <description>Manage socket connections (client and server) and send HTTP requests (both GET and POST).</description>
+    <license>smythtech.net</license>
+
+    <js-module src="www/connectionManager.js" name="connectionManager">
+        <clobbers target="window.connectionManager" />
+    </js-module>
+
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ConnectionManager" >
+                <param name="android-package" value="net.smythtech.connectionManager.ConnectionManager"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+        <source-file src="src/android/ConnectionManager.java" target-dir="src/net/smythtech/connectionManager" />
+	<source-file src="src/android/Communicator.java" target-dir="src/net/smythtech/connectionManager" />
+    </platform>
+
+</plugin>
